@@ -19,6 +19,11 @@ public class JwtServiceImpl implements JwtService {
     private final Key SECRET_KEY = Keys.hmacShaKeyFor(SECRET_STRING.getBytes());
 
     @Override
+    public boolean authenticate(String username, String password) {
+        return "admin".equals(username) && "admin".equals(password);
+    }
+
+    @Override
     public String generateToken(String username, String role) {
         HashMap<String, Object> claims = new HashMap<>();
         claims.put("role",role);
